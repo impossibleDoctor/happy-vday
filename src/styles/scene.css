@@ -1,0 +1,306 @@
+.scene {
+  position: relative;
+  height: min(58vh, 500px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.88), rgba(255, 244, 233, 0.72)),
+    repeating-linear-gradient(110deg, rgba(255, 184, 204, 0.08) 0 14px, transparent 14px 34px);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.sunbeam {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -80px;
+  right: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 139, 0.75), rgba(255, 215, 139, 0));
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 74px;
+  border-top: 2px dashed rgba(126, 107, 88, 0.35);
+}
+
+.character {
+  position: absolute;
+  width: 92px;
+  height: 170px;
+  bottom: 78px;
+  filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.08));
+}
+
+.character .ear {
+  opacity: 0;
+  position: absolute;
+  top: 2px;
+  width: 22px;
+  height: 30px;
+  background: #fff;
+  border: 2px solid #292929;
+  border-radius: 80% 80% 40% 40%;
+}
+
+.character .ear.left {
+  left: 13px;
+  transform: rotate(-12deg);
+}
+
+.character .ear.right {
+  right: 13px;
+  transform: rotate(12deg);
+}
+
+.character .head {
+  position: absolute;
+  left: 11px;
+  top: 16px;
+  width: 70px;
+  height: 64px;
+  background: #fff;
+  border: 3px solid #292929;
+  border-radius: 44px;
+}
+
+.character .face {
+  position: absolute;
+  left: 31px;
+  top: 42px;
+  width: 30px;
+  height: 18px;
+}
+
+.character .face::before,
+.character .face::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  background: #292929;
+  border-radius: 50%;
+}
+
+.character .face::before {
+  left: 2px;
+}
+
+.character .face::after {
+  right: 2px;
+}
+
+.character .body {
+  position: absolute;
+  top: 74px;
+  left: 20px;
+  width: 52px;
+  height: 78px;
+  border: 3px solid #292929;
+  border-radius: 16px;
+}
+
+.boy {
+  left: -20%;
+}
+
+.boy .body {
+  background: linear-gradient(#b7dafd, #8ab8ea);
+}
+
+.boy .sunflower {
+  opacity: 0;
+  position: absolute;
+  right: -7px;
+  top: 96px;
+  font-size: 30px;
+  transform-origin: center;
+}
+
+.girl {
+  right: 14%;
+  transform-origin: center bottom;
+  animation: softSway 2.2s ease-in-out infinite;
+}
+
+.girl .body {
+  background: linear-gradient(#ffd4dd, #ffb2c5);
+}
+
+.scene.run .boy {
+  animation: walkIn 6.1s 0.35s cubic-bezier(0.16, 0.86, 0.39, 1) forwards, stepBounce 0.38s 0.35s infinite;
+}
+
+.scene.run .boy .sunflower {
+  animation: flowerWave 0.9s ease-in-out infinite;
+}
+
+.floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: 78px;
+  opacity: 0;
+  color: #ff7d9c;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  animation: heartRise 4.2s ease-in-out infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 44%;
+  animation-delay: 1.8s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 49%;
+  animation-delay: 2.5s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 53%;
+  animation-delay: 3.1s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 57%;
+  animation-delay: 3.7s;
+}
+
+.speech-bubble {
+  position: absolute;
+  right: 23%;
+  top: 90px;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 10px 12px;
+  max-width: 240px;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  border-left: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  bottom: -8px;
+  left: 28px;
+  transform: rotate(-45deg);
+}
+
+.speech-bubble.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ask-card {
+  margin-top: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 14px 16px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.42s ease, transform 0.42s ease;
+}
+
+.ask-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ask {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+@keyframes walkIn {
+  0% {
+    left: -20%;
+  }
+  70% {
+    left: 39%;
+  }
+  100% {
+    left: 39%;
+  }
+}
+
+@keyframes stepBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes flowerWave {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes heartRise {
+  0% {
+    transform: translateY(0) scale(0.86);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-120px) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes softSway {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(2.2deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .scene {
+    height: min(52vh, 430px);
+  }
+
+  .speech-bubble {
+    right: 6%;
+    top: 70px;
+    max-width: 180px;
+  }
+
+  .girl {
+    right: 8%;
+  }
+}

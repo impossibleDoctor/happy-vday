@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine Date Story</title>
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/scene.css" />
+  <link rel="stylesheet" href="src/styles/flow.css" />
+  <link rel="stylesheet" href="src/styles/effects.css" />
+
+  <script type="module" src="src/js/app.js" defer></script>
+
+<!-- <script>
+  // The global is now `window.indefinite`
+  const typeLabel = "apple";
+  const locationLabel = "office";
+
+  const message = `This confirms ${window.indefinite(typeLabel)} ${typeLabel} at ${locationLabel}.`;
+
+  console.log(message); 
+  // Output: "This confirms an apple at office."
+</script> -->
+
+
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <main id="app">
+    <section id="intro-screen" class="screen is-active" aria-label="Intro scene">
+      <header class="title-wrap">
+        <p class="eyebrow">A tiny story</p>
+        <h1>Will You Be My Valentine?</h1>
+      </header>
+
+      <div id="scene" class="scene">
+        <div class="sunbeam" aria-hidden="true"></div>
+        <div class="ground" aria-hidden="true"></div>
+
+        <div class="character boy" aria-label="boy with sunflower">
+          <span class="ear left"></span>
+          <span class="ear right"></span>
+          <span class="head"></span>
+          <span class="face"></span>
+          <span class="body"></span>
+          <span class="sunflower">🌻</span>
+        </div>
+
+        <div class="character girl" aria-label="girl">
+          <span class="ear left"></span>
+          <span class="ear right"></span>
+          <span class="head"></span>
+          <span class="face"></span>
+          <span class="body"></span>
+        </div>
+
+        <div class="floating-hearts" aria-hidden="true">
+          <span>♡</span>
+          <span>♡</span>
+          <span>♡</span>
+          <span>♡</span>
+        </div>
+
+        <div id="speech-bubble" class="speech-bubble" role="status" aria-live="polite">
+          Hi!...<br />
+          Will you be my Valentine's date?
+        </div>
+      </div>
+
+      <div id="ask-card" class="ask-card" aria-live="polite">
+        <p class="ask">So... will you?</p>
+        <div class="actions">
+          <button id="yes-btn" class="btn primary" type="button">Yes</button>
+          <button id="no-btn" class="btn secondary" type="button">No</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow-screen" class="screen" aria-label="Date story flow">
+      <div class="story-shell">
+        <div class="progress-wrap" aria-live="polite">
+          <span id="progress-label">Step 1 of 4</span>
+          <div class="progress-bar"><span id="progress-fill"></span></div>
+        </div>
+
+        <div id="story-steps">
+          <article id="step-type" class="step-card is-active" data-index="0">
+            <h2>What kind of date?</h2>
+            <p class="sub">Choose the vibe.</p>
+            <div id="type-choices" class="choice-grid">
+              <button class="choice" type="button" data-value="Coffee">Coffee</button>
+              <button class="choice" type="button" data-value="Picnic">Picnic</button>
+              <button class="choice" type="button" data-value="Movie">Movie</button>
+              <button class="choice" type="button" data-value="Dinner">Dinner</button>
+            </div>
+            <label id="other-date-type-field" class="field other-date-type-field">
+              <span>Other ideas?</span>
+              <input id="other-date-type-input" type="text" placeholder="[input here]" />
+            </label>
+            <div class="step-actions">
+              <button id="type-next" class="btn primary" type="button" disabled>Next</button>
+            </div>
+          </article>
+
+          <article id="step-datetime" class="step-card" data-index="1">
+            <h2>When??</h2>
+            <p class="sub">When should we meet?</p>
+            <label class="field">
+              <span>Date</span>
+              <input id="date-input" type="date" />
+            </label>
+            <label class="field">
+              <span>Time</span>
+              <input id="time-input" type="time" />
+            </label>
+            <div class="step-actions">
+              <button id="datetime-back" class="btn secondary" type="button">Back</button>
+              <button id="datetime-next" class="btn primary" type="button">Next</button>
+            </div>
+          </article>
+
+          <article id="step-location" class="step-card" data-index="2">
+            <h2>Where?</h2>
+            <p class="sub">At baka biglang magkita pa tayo</p>
+            <div id="location-grid" class="location-grid"></div>
+            <!-- <audio
+              id="location-song"
+              preload="auto"
+              loop
+              src="src/assets/music/1-01_Saan_.m4a"
+              muted
+            ></audio> -->
+            <div class="step-actions">
+              <button id="location-back" class="btn secondary" type="button">Back</button>
+              <button id="location-next" class="btn primary" type="button" disabled>Next</button>
+            </div>
+          </article>
+
+          <article id="step-name" class="step-card" data-index="3">
+            <h2>Who are you?</h2>
+            <p class="sub">Your name is not required here.</p>
+            <div class="name-video-wrap"
+              style="display: flex; justify-content: center; align-items: center;">
+              <img src="src\assets\memes\wait-a-minute-who-are-you.gif">
+              <!-- <video id="name-video" class="name-video" playsinline preload="auto">
+                <source src="src/assets/memes/wait-a-mintue-who-are-you.mp4" type="video/mp4" />
+              </video> -->
+            </div>
+            <label class="field">
+              <span>Name</span>
+              <input id="name-input" type="text" placeholder="You may enter your name here" autocomplete="name"/>
+            </label>
+            <div class="step-actions">
+              <button id="name-back" class="btn secondary" type="button">Back</button>
+              <button id="finish-btn" class="btn primary" type="button">Finish</button>
+            </div>
+          </article>
+
+          <article id="step-final" class="step-card step-final" data-index="4">
+            <div id="celebration-area" class="celebration-area" aria-hidden="true"></div>
+            <div id="invite-shell" class="invite-shell" aria-live="polite">
+              <div class="invite-flap" aria-hidden="true"></div>
+              <div class="invite-card">
+                <p id="invite-kick" class="invite-kicker">You are invited</p>
+                <h2 id="invite-title">Valentine's Date Invitation</h2>
+                <p id="final-copy" class="invite-copy"></p>
+                <!-- <p class="invite-signoff">See you then!</p> -->
+              </div>
+            </div>
+            <div class="step-actions">
+              <!-- <button id="final-back" class="btn secondary" type="button">Back</button> -->
+              <button id="send-me-btn" class="btn secondary" type="button" hidden>Send me the Invitation?</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="yey-overlay" class="yey-overlay" hidden>
+    <div class="yey-burst" role="status" aria-live="polite">
+      <p class="yey-text">YEY!</p>
+      <div id="yey-poppers" class="yey-poppers" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div id="meme-overlay" class="meme-overlay" hidden>
+    <div id="meme-surface" class="meme-surface"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+.story-shell {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 244, 233, 0.62));
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.progress-wrap {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#progress-label {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 9px;
+  border-radius: 999px;
+  background: #f6ebde;
+  overflow: hidden;
+}
+
+#progress-fill {
+  display: block;
+  width: 25%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff95b0, #ff5d8b);
+  transition: width 0.32s ease;
+}
+
+#story-steps {
+  position: relative;
+}
+
+.step-card {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(26px) scale(0.98);
+  transition: opacity 0.42s ease, transform 0.42s ease;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(234, 223, 210, 0.7);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.step-card.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) scale(1);
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.choice {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 11px 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.choice:hover {
+  transform: translateY(-1px);
+}
+
+.choice.is-selected {
+  border-color: rgba(255, 75, 127, 0.55);
+  background: rgba(255, 221, 230, 0.5);
+}
+
+.other-date-type-field {
+  margin-top: -4px;
+  margin-bottom: 14px;
+  padding: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.step-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.location-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  display: grid;
+  gap: 8px;
+  padding-bottom: 10px;
+}
+
+.location-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.location-card .meta {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.location-card .meta strong {
+  font-size: 0.95rem;
+}
+
+.pick-location {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.84rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.location-card.is-selected {
+  border-color: rgba(255, 75, 127, 0.52);
+  box-shadow: 0 12px 20px rgba(255, 92, 137, 0.14);
+}
+
+.location-card.is-selected .pick-location {
+  background: rgba(255, 221, 230, 0.64);
+  border-color: rgba(255, 75, 127, 0.52);
+}
+
+.other-location-card {
+  padding: 12px;
+}
+
+.other-location-body {
+  display: grid;
+  gap: 8px;
+}
+
+.other-location-body > strong {
+  font-size: 0.98rem;
+}
+
+.other-location-field {
+  margin-bottom: 0;
+}
+
+.name-video-wrap {
+  margin: 0 0 14px;
+  border: 1px solid rgba(234, 223, 210, 0.85);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  width: 100%;
+}
+
+.name-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(56vh, 520px);
+  object-fit: contain;
+  background: #000;
+  opacity: 1;
+  transition: opacity 0.36s ease;
+}
+
+.name-video.is-fading {
+  opacity: 0;
+}
+
+.step-final {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 205, 222, 0.42), transparent 38%),
+    radial-gradient(circle at 84% 14%, rgba(255, 237, 200, 0.55), transparent 36%),
+    rgba(255, 255, 255, 0.88);
+}
+
+.invite-shell {
+  position: relative;
+  max-width: 640px;
+  margin: 4px auto 10px;
+  perspective: 1000px;
+}
+
+.invite-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 78px;
+  background: linear-gradient(145deg, #ffd8e4, #ffc2d5);
+  border: 1px solid #efc0ce;
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  transform-origin: top;
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+
+.invite-card {
+  position: relative;
+  top: 20px;
+  background: #fff;
+  border: 1px solid #f0d8c6;
+  border-radius: 18px;
+  padding: 32px 20px 18px;
+  box-shadow: 0 18px 26px rgba(84, 52, 62, 0.12);
+  text-align: center;
+  transform: translateY(20px) scale(0.96);
+  opacity: 0;
+}
+
+.invite-shell.is-open .invite-flap {
+  animation: flapOpen 0.72s ease forwards;
+}
+
+.invite-shell.is-open .invite-card {
+  animation: cardLift 0.7s 0.26s ease forwards;
+}
+
+.invite-kicker {
+  margin: 0;
+  font-family: "Baloo 2", "Trebuchet MS", sans-serif;
+  color: #ff4b7f;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+#invite-title {
+  margin: 6px 0 8px;
+}
+
+.invite-copy {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+.invite-signoff {
+  margin: 10px 0 0;
+  font-family: "Baloo 2", "Trebuchet MS", sans-serif;
+  font-size: 1.2rem;
+  color: #d63e6d;
+}
+
+.celebration-area {
+  position: relative;
+  margin: 24px 0 14px;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 75, 127, 0.35);
+  background: rgba(255, 228, 236, 0.38);
+}
+
+@keyframes flapOpen {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-150deg);
+  }
+}
+
+@keyframes cardLift {
+  0% {
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .choice-grid,
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .step-actions {
+    justify-content: stretch;
+  }
+
+  .step-actions .btn {
+    flex: 1 1 auto;
+  }
+
+  .location-card img {
+    height: 170px;
+  }
+
+  .invite-flap {
+    height: 66px;
+  }
+
+  .invite-card {
+    padding: 30px 14px 16px;
+  }
+}
