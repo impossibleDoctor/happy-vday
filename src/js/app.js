@@ -339,7 +339,7 @@ function finishStory() {
       title.textContent = `Happy Valentine's Day, ${typedName} <3 !`;
     }
 
-    setFinalCopy(`Are you for real?! ${typeLabel.charAt(0).toUpperCase() + typeLabel.slice(1)} date at ${locationLabel} is on ${whenLabel}.`);
+    setFinalCopy(`Are you for real?! Made this just for fun 😂 But a ${typeLabel.charAt(0).toUpperCase() + typeLabel.slice(1)} date at ${locationLabel} on ${whenLabel} sounds cute. Thanks for visiting this site! Hope it made you smile too. :)`);
     launchCelebration("celebration-area", 42, ["💖", "✨", "🌻", "🎉", "💗"]);
     document.getElementById("restart-btn").hidden = false;
   } else {
